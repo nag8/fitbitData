@@ -27,7 +27,7 @@ class FitbitManager{
       },
     };
     
-    const res = UrlFetchApp.fetch(`https://api.fitbit.com/oauth2/token?grant_type=refresh_token&refresh_token=${this.refreshToken}`, option);
+    const res = UrlFetchApp.fetch(`https://api.fitbit.com/oauth2/token?grant_type=refresh_token&expires_in=90000&refresh_token=${this.refreshToken}`, option);
     const json = JSON.parse(res);
     this.accessToken = json.access_token;
     this.refreshToken = json.refresh_token;
