@@ -6,12 +6,15 @@ class Weight{
     this.weight = json.weight;
   }
 
-  getOutList(){
-    return [
-      this.time.format('YYYY/MM/DD HH:mm'),
-      this.weight,
-      this.fat,
-      this.bmi
-    ];
+  getNotionPage(){
+    const notionPage = new NotionPage();
+    notionPage.setTitle('名前', `weigth ${this.time.format('MM/DD HH:mm')}`);
+    notionPage.setIcon('🧗');
+    notionPage.setPropertiesDate('time', this.time);
+    notionPage.setPropertiesNumber('weight', this.weight);
+    notionPage.setPropertiesNumber('fat', this.fat);
+    notionPage.setPropertiesNumber('bmi', this.bmi);
+
+    return notionPage;
   }
 }

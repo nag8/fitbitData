@@ -2,9 +2,20 @@ const SHEET = {
   config: {
     name: 'config',
     cell: {
-      id: 'b2',
-      accessToken: 'b3',
-      refreshToken: 'b4',
+      fitbit: {
+        id: 'c2',
+        accessToken: 'c3',
+        refreshToken: 'c4',
+      },
+      notion: {
+        token: 'c5',
+        db: {
+          weight: 'c6',
+          sleep: 'c7',
+          activity: 'c8',
+          heartRate: 'c9',
+        },
+      },
     },
   },
   weight: {
