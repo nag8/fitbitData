@@ -1,21 +1,24 @@
 function main() {
+
+  const config = getNotionConfig();
+  
   const fitbitManager = new FitbitManager();
-  const notionManager = new NotionManager();
+  const notionManager = Notion.initManager(config.token);
   
   fitbitManager.getSleepList().forEach(sleep => {
-    notionManager.createSleepPage(sleep.getNotionPage());
+    sleep.createNotionRecord(notionManager, config.db.sleep);
   });
 
   fitbitManager.getTodayWeightList().forEach(weight => {
-    notionManager.createWeightPage(weight.getNotionPage());
+    weight.createNotionRecord(notionManager, config.db.weight);
   });
 
   fitbitManager.getActivityList().forEach(activity => {
-    notionManager.createActivityPage(activity.getNotionPage());
+    activity.createNotionRecord(notionManager, config.db.activity);
   });
 
   const heartRate = fitbitManager.getHeartRate();
-  notionManager.createHeartRatePage(heartRate.getNotionPage());
+  heartRate.createNotionRecord(notionManager, config.db.heartRate);
 }
 
 function refreshToken(){

@@ -6,15 +6,15 @@ class Weight{
     this.weight = json.weight;
   }
 
-  getNotionPage(){
-    const notionPage = new NotionPage();
-    notionPage.setTitle('名前', `weigth ${this.time.format('MM/DD HH:mm')}`);
-    notionPage.setIcon('🧗');
-    notionPage.setPropertiesDate('time', this.time);
-    notionPage.setPropertiesNumber('weight', this.weight);
-    notionPage.setPropertiesNumber('fat', this.fat);
-    notionPage.setPropertiesNumber('bmi', this.bmi);
+  createNotionRecord(notionManager, databaseId){
+    const notionRecord = Notion.initRecord();
+    notionRecord.setTitle('名前', `weigth ${this.time.format('MM/DD HH:mm')}`);
+    notionRecord.setIcon('🧗');
+    notionRecord.setPropertiesDatetime('time', this.time);
+    notionRecord.setPropertiesNumber('weight', this.weight);
+    notionRecord.setPropertiesNumber('fat', this.fat);
+    notionRecord.setPropertiesNumber('bmi', this.bmi);
 
-    return notionPage;
+    notionManager.createRecord(databaseId, notionRecord);
   }
 }
